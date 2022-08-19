@@ -8,7 +8,10 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3000/solutions')
     .then(res => res.json())
-    .then(solutionFromServer => setSolution(solutionFromServer))
+    .then(solutionFromServer => {
+      let randomSolution = solutionFromServer[Math.floor(Math.random() * solutionFromServer.length)]
+      setSolution(randomSolution.word)
+  })
   },[])
 
   return (

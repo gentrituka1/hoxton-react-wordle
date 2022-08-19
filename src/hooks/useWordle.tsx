@@ -19,8 +19,15 @@ export function useWordle({solution} : Props) {
     }
 
     function handleKeyup({key}){
-        console.log(key)
+        if(key === 'Backspace'){
+        setCurrentGuess(guess => guess.slice(0, -1))
+        return
+        }
+        if(currentGuess.length < 5){
+            setCurrentGuess(guess => guess + key)
+        }
     }
+    
 
     return {turn, currentGuess, guesses, isCorrect, handleKeyup}
 }

@@ -5,9 +5,9 @@ export default function Wordle({solution}: Props) {
     const {currentGuess, handleKeyup} = useWordle({solution})
 
     useEffect(() => {
-        document.addEventListener('keyup', handleKeyup)
+        window.addEventListener('keyup', handleKeyup)
         return () => {
-           document.removeEventListener('keyup', handleKeyup)
+           window.removeEventListener('keyup', handleKeyup)
         }
     }, [handleKeyup])
 

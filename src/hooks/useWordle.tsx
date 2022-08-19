@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-type Props = {
+export type Props = {
     solution: string | null
 }
 
@@ -18,7 +18,9 @@ export function useWordle({solution} : Props) {
     function addNewGuess(){
     }
 
-    function handleKeyup(event){
-        
+    function handleKeyup({key}){
+        console.log(key)
     }
+
+    return {turn, currentGuess, guesses, isCorrect, handleKeyup}
 }

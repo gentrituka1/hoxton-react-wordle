@@ -1,22 +1,23 @@
-import { useEffect } from 'react'
-import { useWordle } from '../hooks/useWordle'
+import React from "react";
+import Board from "./Board";
+import Keyboard from "./Keyboard";
 
-export default function Wordle({solution}: any) {
-    const {currentGuess, handleKeyup, guesses, turn, isCorrect} = useWordle({solution})
+import { WordleStore } from "./WordleStore";
 
-    useEffect(() => {
-        document.addEventListener('keyup', handleKeyup)
-        return () => {
-           document.removeEventListener('keyup', handleKeyup)
-        }
-    }, [handleKeyup])
+export function Wordle({ wordList, solution, nbRows, nbCols }) {
 
-  return (
-    <>
-        <div>
-            <div>Solution: {solution}</div>
-            <div>Current Guess: {currentGuess}</div>
-        </div>
-    </>
-  )
+  const onNewGame = () => {
+    window.location.reload()
+  }
+
+  return <WordleStore wordList={wordList} solution={solution} nbRows={nbRows} nbCols={nbCols}>
+    <h1 className="center">Wordle</h1>
+
+    <Board />
+
+    <div className="center">
+      <Keyboard />
+      <button onClick={onNewGame}>New Game</button>
+    </div>
+  </WordleStore>
 }

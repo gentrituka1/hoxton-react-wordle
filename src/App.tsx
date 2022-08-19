@@ -12,7 +12,7 @@ function App() {
       let randomSolution = solutionFromServer[Math.floor(Math.random() * solutionFromServer.length)]
       setSolution(randomSolution.word)
   })
-  },[])
+  },[setSolution])
 
   return (
     <div className="App">
